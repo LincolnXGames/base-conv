@@ -1,10 +1,10 @@
-import {convDec, toDec} from './conv.js'
+import {convDec, toDec} from './conv.js';
 
-let number = 0
+let number = 0;
 
 let numberInput = document.getElementById('number');
-let inputs = []
-let toConv = []
+let inputs = [];
+let toConv = [];
 
 const regBas = (b, id, name) => {
     let table = document.getElementById('bases');
@@ -15,9 +15,9 @@ const regBas = (b, id, name) => {
     base.addEventListener('input', (event) => {
         const el = event.target;
         const i = inputs.indexOf(el);
-        let value = event.target.value
-        number = toDec(value, toConv[i])
-        reflect(number, i)
+        let value = event.target.value;
+        number = toDec(value, toConv[i]);
+        reflect(number, i);
     });
 };
 
@@ -29,18 +29,20 @@ const reflect = (n = 0, ex) => {
 };
 
 window.onload = (event) => {
-    regBas(2, 'binary', 'Binary')
-    regBas(3, 'ternary', 'Ternary')
-    regBas(4, 'quaternary', 'Quaternary')
-    regBas(6, 'heximal', 'Heximal')
-    regBas(12, 'dozenal', 'Dozenal')
-    reflect(0)
+    regBas([3, {de: 2}], 'unseminary', 'Unseminary');
+    regBas(2, 'binary', 'Binary');
+    regBas(3, 'ternary', 'Ternary');
+    regBas(4, 'quaternary', 'Quaternary');
+    regBas(6, 'heximal', 'Heximal');
+    regBas(12, 'dozenal', 'Dozenal');
+    regBas(20, 'vigesimal', 'Vigesimal');
+    reflect(0);
 };
 
 numberInput.addEventListener('input', (event) => {
-    let value = event.target.value
+    let value = event.target.value;
     if (value.length > 0 && !isNaN(parseFloat(value))) {
-        number = value
-        reflect(number, 'number')
+        number = value;
+        reflect(number, 'number');
     }
 });
